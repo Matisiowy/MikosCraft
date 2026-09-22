@@ -1,110 +1,108 @@
-# MikosCraft
+cd /opt/mikoscraft || exit 1
 
-A Minecraft-inspired voxel sandbox built from scratch for the Sony PlayStation 2.
+cat > README.md <<'EOF'
+<div align="center">
 
-MikosCraft uses PS2SDK and gsKit directly. TyraCraft / Tyra Engine are used only as technical references and are not dependencies.
+# 🟩 MIKOSCRAFT
 
-## Current status
+### A voxel sandbox built from scratch for the PlayStation 2
 
-Early development / pre-alpha.
+**PS2SDK · gsKit · C · Emotion Engine · Graphics Synthesizer**
 
-Currently implemented:
+![Status](https://img.shields.io/badge/status-pre--alpha-orange)
+![Platform](https://img.shields.io/badge/platform-PlayStation%202-003791)
+![Language](https://img.shields.io/badge/language-C-blue)
+![FPS](https://img.shields.io/badge/target-50%20FPS-brightgreen)
 
-- PlayStation 2 native ELF
-- gsKit renderer
-- textured voxel terrain
-- Minecraft-style texture atlas support
-- procedural seeded terrain
-- 8x32x8 chunks
-- 3x3 resident chunk world
-- cached exposed-face chunk meshes
-- world-space face culling
-- camera transform cache
-- perspective-correct STQ texture mapping
-- near-plane triangle clipping
-- DualShock 2 analog controls
-- player movement
-- sprinting
-- jumping and gravity
-- AABB block collision
-- block raycasting
-- hold-to-mine interaction
-- block placement
-- dynamic chunk mesh rebuilding
-- basic menus and HUD
-- stable 50 FPS target
+---
 
-## Controls
+**MikosCraft** is an experimental Minecraft-inspired voxel sandbox written specifically for the **Sony PlayStation 2**.
 
-- Left analog stick - Move
-- Right analog stick - Look
-- Cross - Jump
-- Square - Sprint
-- R2 - Mine block
-- L2 - Place block
-- Circle - Back / menu
+It uses **PS2SDK and gsKit directly** and features a custom voxel renderer, procedural terrain, chunk meshing, player physics and block interaction.
 
-## Planned
+No general-purpose game engine is used.
 
-- block breaking crack animation
-- item drops
-- 9-slot hotbar
-- inventory
-- crafting
-- tools and mining speeds
-- larger dynamic world
-- chunk streaming
-- improved terrain generation
-- save/load
-- lighting
-- transparent blocks
-- water
-- mobs
-- audio/music
-- renderer batching / further PS2 optimization
+</div>
 
-## Building
+---
 
-Requires:
+## 🎮 Current state
 
-- PS2DEV
-- PS2SDK
-- gsKit
+MikosCraft is currently in **early pre-alpha development**.
 
-Build with:
+The game can already generate a voxel world, render textured chunks, move a player through the world with collision and allow blocks to be mined and placed.
 
-    make -j4
+### Working
 
-The resulting executable is:
+- 🌍 Seed-based procedural terrain
+- 🧱 Block registry
+- 📦 Chunk-based world storage
+- ⚡ Cached exposed-face chunk meshes
+- 🎨 Minecraft-style texture atlas support
+- 🎥 First-person camera
+- 🎮 DualShock 2 analog controls
+- 🏃 Walking and sprinting
+- 🦘 Jumping and gravity
+- 💥 AABB player/world collision
+- 🎯 Block raycasting
+- ⛏️ Hold-to-mine block breaking
+- 🧱 Block placement
+- 🔄 Dynamic chunk mesh rebuilding
+- ✂️ Near-plane triangle clipping
+- 👁️ World-space face culling
+- 📐 Perspective-correct STQ texturing
+- 🖥️ Basic menu and HUD
+- ⚡ 50 FPS / 50 VPS target on PAL
 
-    MIKOSCRAFT.ELF
+---
 
-## Assets
+## 📸 Screenshots
 
-Minecraft assets are not included in this repository.
+> Screenshots and gameplay footage coming soon.
 
-For development, MikosCraft can use assets extracted from a legally owned Minecraft installation. These assets remain property of their respective copyright holders.
+---
 
-## Technical notes
+## 🎮 Controls
 
-The renderer is custom and based directly on PS2SDK/gsKit.
+| Control | Action |
+|---|---|
+| Left Stick | Move |
+| Right Stick | Look |
+| ✕ Cross | Jump |
+| □ Square | Sprint |
+| R2 | Mine block |
+| L2 | Place block |
+| ○ Circle | Back / Menu |
 
-Current voxel rendering pipeline:
+---
 
-    World
-      -> Chunks
-      -> Exposed-face ChunkMesh
-      -> World-space face culling
-      -> Camera-space transform
-      -> Near-plane clipping
-      -> Perspective projection
-      -> Perspective-correct STQ
-      -> PlayStation 2 GS
+## 🧱 Rendering
 
-Future renderer work will focus on larger geometry batches, chunk frustum culling and PS2-specific DMA/VU1 optimization.
+MikosCraft contains its own voxel rendering pipeline built around the PlayStation 2 Graphics Synthesizer.
 
-## License
-
-Source code licensing to be decided.
-
-MikosCraft is an independent hobby project and is not affiliated with Mojang Studios or Microsoft.
+```text
+                 WORLD
+                   │
+                   ▼
+                CHUNKS
+                   │
+                   ▼
+          EXPOSED FACE MESH
+                   │
+                   ▼
+         WORLD-SPACE CULLING
+                   │
+                   ▼
+          CAMERA TRANSFORM
+                   │
+                   ▼
+         NEAR-PLANE CLIPPING
+                   │
+                   ▼
+       PERSPECTIVE PROJECTION
+                   │
+                   ▼
+     PERSPECTIVE-CORRECT STQ
+                   │
+                   ▼
+          PLAYSTATION 2 GS
