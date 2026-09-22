@@ -1,6 +1,4 @@
-cd /opt/mikoscraft || exit 1
 
-cat > README.md <<'EOF'
 <div align="center">
 
 # 🟩 MIKOSCRAFT
