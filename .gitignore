@@ -1,0 +1,26 @@
+# Build
+build/
+*.o
+*.elf
+*.ELF
+*.iso
+*.ISO
+
+# Local backups / logs
+backups/
+*.log
+*.bak
+*.before-*
+
+# Minecraft / Mojang assets - DO NOT DISTRIBUTE
+assets/minecraft-1.8.9/
+MikosCraft-MC189.zip
+
+# Generated / temporary
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
